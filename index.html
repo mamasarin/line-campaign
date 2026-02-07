@@ -3,15 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0;url= https://lin.ee/FOqCqwa">
-    <title>LINEへ移動中...</title>
-    <script>
-        // JavaScriptでも転送を実行（より確実にするため）
-        window.location.replace("https://lin.ee/FOqCqwa");
-    </script>
+    <title>LINE公式アカウントへ移動</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        p {
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #06C755; /* LINEの緑色 */
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.1s;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <p>LINE公式アカウントへ移動しています。<br>
-    自動的に切り替わらない場合は<a href="https://lin.ee/FOqCqwa">こちら</a>をクリックしてください。</p>
+
+    <div class="container">
+        <p>下のボタンを押して<br>LINEを開いてください</p>
+        <a href="https://lin.ee/pO3vS7C" class="btn" id="lineLink">LINEを開く</a>
+        
+        <p class="note">※自動で切り替わらない場合はボタンを押してください</p>
+    </div>
+
+    <script>
+        // 遷移先URL（ここを変更しました）
+        const targetUrl = "https://lin.ee/pO3vS7C";
+
+        // ユーザーエージェントを取得（小文字に変換）
+        const ua = navigator.userAgent.toLowerCase();
+
+        // アプリ内ブラウザ（TikTok, Instagram, Twitter/X, Facebook, LINE）か判定
+        const isInApp = /tiktok|instagram|twitter|fbav|line/.test(ua);
+
+        // アプリ内ブラウザ「ではない」場合のみ、自動転送を試みる
+        if (!isInApp) {
+            setTimeout(() => {
+                window.location.replace(targetUrl);
+            }, 500); 
+        }
+    </script>
 </body>
 </html>
